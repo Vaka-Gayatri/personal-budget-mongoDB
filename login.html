@@ -22,7 +22,25 @@
         <h1>Login</h1>
     </header>
     <main class="container center">
-        
+        <!-- This is an A11y Change -->
+        <!-- Defining the role of given form.-->
+        <form role="login">
+            <fieldset>
+                <!-- This is an A11y Change -->
+                <!-- Using aria-labelledby to improve Ally -->
+                <label class ="form_label" for="username">Username</label>
+                <input class ="form_input" type="text" name="username" aria-labelledby="username">
+                 <br><br>
+                <label for="password" class ="form_label">Password</label>
+                <!-- This is an A11y Change -->
+                <!-- Using aria-describedby to describe what needs to be done -->
+                <input id="password" class ="form_input" type="password" aria-describedby="requirements" aria-labelledby="password">
+                <p id="requirements" class ="form_require">Your password must be at least 8 characters in length</p>
+                <!-- This is an A11y Change -->
+                <!-- Using buttons with good UI improves the accessibility for users -->
+                <button aria-label="button">Login</button>
+            </fieldset>
+        </form>
         
     </main>
 </body>
