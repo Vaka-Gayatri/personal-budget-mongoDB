@@ -1,6 +1,6 @@
 [ {
     "title": "Eat out",
-    "budget": 25
+    "budget": 50
 },
 {
     "title": "Rent",
@@ -16,7 +16,7 @@
 },
 {
     "title": "University Fee",
-    "budget": 3600
+    "budget": 600
 },
 {
     "title": "Water bill",
