@@ -142,18 +142,7 @@ polyline{
             datasets: [
                 {
                     data: [],
-                    backgroundColor: [
-                        '#ffcd56',
-                        '#ff6384',
-                        '#36a2eb',
-                        '#fd6b19',
-                        ' #b30000',
-                        '#aa80ff',
-                        '#800080',
-                        '#ac7339',
-                        '#4dffc3',
-                        '#ffff66'
-                    ],
+                    backgroundColor: [],
                 }
             ],
             labels: []
@@ -166,14 +155,15 @@ polyline{
                 data: dataSource
             });
         }
-
+ // Part2: step 1 All chart data is fetched from the database.
         function getBudget(){
             axios.get('http://localhost:3000/budget')
             .then(function (res) {
                 console.log(res);
                 for (var i = 0; i < res.data.length; i++) {
                     dataSource.datasets[0].data[i] = res.data[i].budget;
-                    dataSource.labels[i] = res.data[i].title;
+                    dataSource.labels[i] = res.data[i].title
+                    dataSource.datasets[0].backgroundColor[i]= res.data[i].color;
                 }
                 createChart();
                 change(randomData());
@@ -221,12 +211,13 @@ polyline{
     
     var color = d3.scale.ordinal()
         .domain(["Lorem ipsum", "dolor sit", "amet", "consectetur", "adipisicing", "elit", "sed", "do", "eiusmod", "tempor", "incididunt"])
-        .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
-    
+        .range(dataSource.datasets[0].backgroundColor);
+    // Part2: step 1 All chart data is fetched from the database.
 
 function randomData (){
     var labels = dataSource.labels;
     var values = dataSource.datasets[0].data;
+    console.log(color);
 	return labels.map(function(label, index){
 		return { label: label, value: values[index] }
 	});
